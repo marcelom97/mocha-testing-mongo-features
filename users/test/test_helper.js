@@ -1,16 +1,24 @@
 const mongoose = require('mongoose');
 
+mongoose.Promise = global.Promise;
+
 async function connect() {
-  const conn = await mongoose.connect('mongodb://localhost:27017/test_users', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  });
-  console.log(`MongoDB Connected -> host:${conn.connection.host} DB:${conn.connection.name}`);
+  try {
+    const conn = await mongoose.connect('mongodb://localhost:27017/test_users', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    });
+    console.log(`MongoDB Connected -> host:${conn.connection.host} DB:${conn.connection.name}`);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
-connect();
+before(async () => {
+  await connect();
+});
 
 beforeEach((done) => {
   mongoose.connection.collections.users.drop(() => {

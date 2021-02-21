@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/test_users', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connection
-  .once('open', () => console.log('Good to go'))
-  .on('error', (error) => {
-    console.warn('Warning', error);
+async function connect() {
+  const conn = await mongoose.connect('mongodb://localhost:27017/test_users', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   });
+  console.log(`MongoDB Connected -> host:${conn.connection.host} DB:${conn.connection.name}`);
+}
+
+connect();

@@ -1,8 +1,8 @@
 const assert = require('assert');
 
-const User = require('../models/user');
-const Comment = require('../models/comment');
-const BlogPost = require('../models/blogPost');
+const User = require('../src/user');
+const Comment = require('../src/comment');
+const BlogPost = require('../src/blogPost');
 
 describe('Associations', () => {
   let joe, blogPost, comment;

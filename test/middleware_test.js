@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const assert = require('assert');
-const User = require('../src/user');
-const BlogPost = require('../src/blogPost');
+const User = require('../models/user');
+const BlogPost = require('../models/blogPost');
 
 describe('Middleware', () => {
   let joe, blogPost;

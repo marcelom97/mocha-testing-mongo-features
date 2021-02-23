@@ -26,3 +26,10 @@ MONGO_URI=mongo_test
 ```
 MONGO_URI=localhost
 ```
+
+#### And then run
+
+```
+yarn install
+yarn test
+```

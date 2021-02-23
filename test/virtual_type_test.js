@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const User = require('../src/user');
+const User = require('../models/user');
 
 describe('Virtual types', () => {
   it('postCount returns number of posts', (done) => {

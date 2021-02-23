@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  server:
+    container_name: mocha-node-test
+    restart: on-failure
+    build: .
+    ports:
+      - 5000:${PORT}
+    links:
+      - mongo_test
+  mongo_test:
+    container_name: mongo_test
+    restart: always
+    image: mongo
+    ports:
+      - 27017:${MONGO_PORT}
